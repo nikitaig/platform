@@ -39,16 +39,18 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 <path d="M26,16c0,1.104-0.896,2-2,2H8c-1.104,0-2-0.896-2-2s0.896-2,2-2h16C25.104,14,26,14.896,26,16z" id="XMLID_314_"/>
                 <path d="M26,8c0,1.104-0.896,2-2,2H8c-1.104,0-2-0.896-2-2s0.896-2,2-2h16C25.104,6,26,6.896,26,8z" id="XMLID_315_"/>
                 <path d="M26,24c0,1.104-0.896,2-2,2H8c-1.104,0-2-0.896-2-2s0.896-2,2-2h16C25.104,22,26,22.896,26,24z" id="XMLID_316_"/></svg>
-                         
+         
+    </div>                
 <div class='main_menu hide_menushka' id="drop_menu">
 <div class='menu_out' onclick='drop_menu()'> <svg width="2rem" height="2rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M20 20L4 4.00003M20 4L4.00002 20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
 </svg> </div>  
  <div class='menu_punks'>
+    <a id='punk7' href='/site/login' class='menu_punks_other mb-4'><p>Вход/Регистрация</p></a>
     <a id='punk1' href='/' class='menu_punks_other'><p>Главная</p></a>
     <a id='punk2' href='/site/contact' class='menu_punks_other'><p>Все тесты</p></a>
     <a id='punk3' href='/site/about' class='menu_punks_other'><p>Подписки</p></a>
-    <a id='punk4' href='/site/login' class='menu_punks_other'><p>Мои тесты</p></a>
+    <a id='punk4' href='/site' class='menu_punks_other'><p>Мои тесты</p></a>
     <a id='punk5' href='/user/index' class='menu_punks_other'><p>Найти друзей</p></a>
     <a id='punk6' href='/user/view?id_user=1' class='menu_punks_other'><p>Пользователи</p></a>
     <a id='punk7' href='/user/create' class='menu_punks_other'><p>Правила пользования сайтом</p></a>
@@ -59,7 +61,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
  </div>
 
 </div>
-    </div>
         
         </div>
 
