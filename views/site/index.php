@@ -22,7 +22,7 @@ $this->title = 'Главная';
                 <p class='test_card_text'>Без времени </p>
                 <p class='test_card_text'>17 вопросов</p>
             </div>
-            <div>
+            <div class='boba'>
                 <button class='but_yellow'>Пройти тест</button>
             </div>
         </div>
@@ -40,7 +40,7 @@ $this->title = 'Главная';
                 <p class='test_card_text'>Без времени </p>
                 <p class='test_card_text'>17 вопросов</p>
             </div>
-            <div>
+            <div class='boba'>
                 <button class='but_yellow'>Пройти тест</button>
             </div>
         </div>
@@ -58,7 +58,7 @@ $this->title = 'Главная';
                 <p class='test_card_text'>Без времени </p>
                 <p class='test_card_text'>17 вопросов</p>
             </div>
-            <div>
+            <div class='boba'>
                 <button class='but_yellow'>Пройти тест</button>
             </div>
         </div>
@@ -75,7 +75,7 @@ $this->title = 'Главная';
                 <p class='test_card_text'>Без времени </p>
                 <p class='test_card_text'>17 вопросов</p>
             </div>
-             <div>
+             <div class='boba'>
                 <button class='but_yellow'>Пройти тест</button>
             </div>
         </div>
@@ -85,7 +85,7 @@ $this->title = 'Главная';
             <img src='/assets/images/test_default.png' class='test_card_photo'/>     
         <div class='test_card_content'>
             <div>
-                <p id='card_title4' class='test_card_title'>Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? 
+                <p id='card_title4' class='test_card_title'>Какойтыкартофель?Какойтыкартофель?КакойКакойтыкартофель?Какойтыкартофель?КакойКакойтыкартофель?Какойтыкартофель?КакойКакойтыкартофель?Какойтыкартофель?КакойКакойтыкартофель?Какойтыкартофель?КакойКакойтыкартофель?Какойтыкартофель?КакойКакойтыкартофель?Какойтыкартофель?Какой ты картофель?Какой ты картофель?Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? 
                     Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? Какой ты картофель? 
                 </p>
                 <p id='card_author4' class='test_card_text'>Автор: Григорий ЛепсЛепс Лепс Лепс Лепс Лепс </p>
@@ -93,7 +93,7 @@ $this->title = 'Главная';
                 <p class='test_card_text'>Без времени </p>
                 <p class='test_card_text'>17 вопросов</p>
             </div>
-            <div>
+            <div class='boba'>
                 <button class='but_yellow'>Пройти тест</button>
             </div>
         </div>
