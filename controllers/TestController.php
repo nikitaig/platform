@@ -70,8 +70,25 @@ class TestController extends Controller
         $model = new Test();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_test' => $model->id_test]);
+            if ($model->load($this->request->post()) ) {
+
+
+                if($model->is_timer){
+                    $model->scenario = Test::SCENARIO_TIMER;
+                }
+                elseif($model->is_end){                    
+                    $model->scenario = Test::SCENARIO_END;
+                }
+                elseif($model->is_end && $model->is_timer){
+                    $model->scenario = Test::SCENARIO_TIMEREND;                    
+                }
+                else{                    
+                    $model->scenario = Test::SCENARIO_DEFAULT;
+                }
+                if($model->validate()){
+                    $model->save();
+                    return $this->redirect(['view', 'id_test' => $model->id_test]);
+                }
             }
         } else {
             $model->loadDefaultValues();

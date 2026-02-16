@@ -66,6 +66,7 @@ class TestSearch extends Test
             'anon' => $this->anon,
             'auto_mark' => $this->auto_mark,
             'try' => $this->try,
+            'is_timer' => $this->is_timer,
         ]);
 
         $query->andFilterWhere(['like', 'name_test', $this->name_test])
