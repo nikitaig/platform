@@ -68,23 +68,26 @@ class QuestionController extends Controller
      */
     public function actionCreate($id_test)
     {
+        $models = [];
         $model = new Question();
-        $answ = new AnswerChoice();
         if ($this->request->isPost) {
             $model->load($this->request->post());
-            $answ->load($this->request->post());
+            $model->test_id = $id_test;
+            $model->save();
+            $postData = $this->request->post('AnswerChoice', []);
 
-
-            echo"<pre>";
-            var_dump($model->text_question);
-            var_dump($answ->text_answer_choice);
-            var_dump($this->request->post());
-            die();
-
-
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_question' => $model->id_question]);
+            // echo"<pre>";
+            // var_dump($model);
+            // die();
+            foreach($postData as $data){
+                $mod = new AnswerChoice();
+                $mod->text_answer_choice = $data['text_answer_choice'];
+                $mod->point = $data['point'];
+                $mod->question_id = $model->id_question;
+                $mod->save();
             }
+            return $this->redirect(['create', 'id_test' => $id_test]);
+
         } else {
             $model->loadDefaultValues();
         }

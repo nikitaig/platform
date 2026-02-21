@@ -28,36 +28,36 @@ use yii\widgets\ActiveForm;
 
         <div class="check_box_box mb-3 w-100 ">
             <div style="width:50%;">
-                <span class="" for='text_answer_choice'>Текст вопроса</span>
-                <input type="text" id='text_answer_choice' class='form-control' name='AnswerChoice[text_answer_choice]'>
+                <span class="" for='text_answer_choice-0'>Текст вопроса</span>
+                <input type="text" id='text_answer_choice-0' class='form-control' name='AnswerChoice[0][text_answer_choice]'>
             </div>
             <div style="width:10%;">
-                <span class="" for='point'>Текст вопроса</span>
-                <input type="text" id='point' class='form-control' name='AnswerChoice[point]'>
+                <span class="" for='point-0'>Текст вопроса</span>
+                <input type="text" id='point-0' class='form-control' name='AnswerChoice[0][point]'>
             </div>
         </div>   
 
 
                 <div class="check_box_box mb-3 w-100 ">
             <div style="width:50%;">
-                <span class="" for='text_answer_choice'>Текст вопроса</span>
-                <input type="text" id='text_answer_choice' class='form-control' name='AnswerChoice[text_answer_choice]'>
+                <span class="" for='text_answer_choice-1'>Текст вопроса</span>
+                <input type="text" id='text_answer_choice-1' class='form-control' name='AnswerChoice[1][text_answer_choice]'>
             </div>
             <div style="width:10%;">
-                <span class="" for='point'>Текст вопроса</span>
-                <input type="text" id='point' class='form-control' name='AnswerChoice[point]'>
+                <span class="" for='point-1'>Текст вопроса</span>
+                <input type="text" id='point-1' class='form-control' name='AnswerChoice[1][point]'>
             </div>
         </div>   
 
 
                 <div class="check_box_box mb-3 w-100 ">
             <div style="width:50%;">
-                <span class="" for='text_answer_choice'>Текст вопроса</span>
-                <input type="text" id='text_answer_choice' class='form-control' name='AnswerChoice[text_answer_choice]'>
+                <span class="" for='text_answer_choice-2'>Текст вопроса</span>
+                <input type="text" id='text_answer_choice-2' class='form-control' name='AnswerChoice[2][text_answer_choice]'>
             </div>
             <div style="width:10%;">
-                <span class="" for='point'>Текст вопроса</span>
-                <input type="text" id='point' class='form-control' name='AnswerChoice[point]'>
+                <span class="" for='point-2'>Текст вопроса</span>
+                <input type="text" id='point-2' class='form-control' name='AnswerChoice[2][point]'>
             </div>
         </div>   
         <div class="boba">
