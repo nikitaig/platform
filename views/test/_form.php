@@ -11,7 +11,7 @@ use app\models\Category;
 ?>
 <div class="enter_main">
     <h1 style='text-align:center;'>Новый тест</h1>
-    <div class="enter">
+    <div class="enter" style='width:90%'>
 
 <?php $form = ActiveForm::begin([
     'id' => 'my-form',
@@ -28,22 +28,35 @@ use app\models\Category;
 
     <?= $form->field($model, 'image')->fileInput(['maxlength' => true]) ?>
 
-    <label class="switch">
-        <input type="checkbox" value='1' name='Test[anon]'>
-        <span class="slider"></span>
-    </label>
 
-    <label class="switch">
-        <input type="checkbox" value='1' name='Test[auto_mark]'>
-        <span class="slider"></span>
-    </label>
-
+    
     <?= $form->field($model, 'try')->textInput() ?>
 
-    <label class="switch">
-        <input type="checkbox" value='1' name='Test[is_end]' id='is_end_check' onchange='toggleEndField(this)'>
-        <span class="slider"></span>
-    </label>
+    <div class="check_box_box mb-3">
+        <label class="switch">
+            <input type="checkbox" value='1' name='Test[anon]'>
+            <span class="slider"></span>
+        </label>
+        <p style="margin-bottom:0;">Анонимный тест</p>
+    </div> 
+
+    <div class="check_box_box mb-3">
+        <label class="switch">
+            <input type="checkbox" value='1' name='Test[auto_mark]'>
+            <span class="slider"></span>
+        </label>
+        <p style="margin-bottom:0;">Автопроверка</p>
+    </div>
+
+
+    
+    <div class="check_box_box mb-3">
+        <label class="switch">
+            <input type="checkbox" value='1' name='Test[is_end]' id='is_end_check' onchange='toggleEndField(this)'>
+            <span class="slider"></span>
+        </label>
+        <p style="margin-bottom:0;">Установить дату окончания теста</p>
+    </div>
 
     
     <div id="end-container" style="<?= $model->is_timer ? '' : 'display: none;' ?>">
@@ -54,10 +67,13 @@ use app\models\Category;
     </div>
 
 
-    <label class="switch">
-        <input type="checkbox" value='1' name='Test[is_timer]' id='enable-extra-checkbox' onchange='toggleExtraField(this)'>
-        <span class="slider"></span>
-    </label>
+    <div class="check_box_box mb-3">
+        <label class="switch">
+            <input type="checkbox" value='1' name='Test[is_timer]' id='enable-extra-checkbox' onchange='toggleTimerField(this)'>
+            <span class="slider"></span>
+        </label>
+        <p style="margin-bottom:0;">Установить время прохождения теста</p>
+    </div>
     
     <div id="timer-container" style="<?= $model->is_timer ? '' : 'display: none;' ?>">
         <?= $form->field($model, 'timer')->textInput([
@@ -65,8 +81,8 @@ use app\models\Category;
         ])->label('Время выполнения') ?>
     </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+    <div class="boba">
+        <?= Html::submitButton('Отправить', ['class' => 'but_yellow']) ?>
     </div>
 
 <?php ActiveForm::end(); ?>
@@ -74,7 +90,7 @@ use app\models\Category;
 </div>
 </div>
 <script>
-function toggleExtraField(checkbox) {
+function toggleTimerField(checkbox) {
     var container = document.getElementById('timer-container');
     var timer = document.getElementById('timer');
     
@@ -96,6 +112,6 @@ function toggleEndField(checkbox) {
         end.value = ''; // Очищаем поле при скрытии
     }
 }
-toggleExtraField('#enable-extra-checkbox');
+toggleTimerField('#enable-extra-checkbox');
 toggleEndField('#is_end_check');
 </script>

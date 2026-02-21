@@ -7,6 +7,7 @@ use app\models\TestSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * TestController implements the CRUD actions for Test model.
@@ -86,6 +87,10 @@ class TestController extends Controller
                     $model->scenario = Test::SCENARIO_DEFAULT;
                 }
                 if($model->validate()){
+                    $model->image=UploadedFile::getInstance($model,'image');        
+                    $file_name='/assets/test_main_image/' . \Yii::$app->getSecurity()->generateRandomString(50). '.' . $model->image->extension;
+                    $model->image->saveAs(\Yii::$app->basePath. '/web/' . $file_name);
+                    $model->image=$file_name; 
                     $model->save();
                     return $this->redirect(['view', 'id_test' => $model->id_test]);
                 }
