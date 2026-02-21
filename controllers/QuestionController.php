@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Question;
+use app\models\AnswerChoice;
 use app\models\QuestionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,11 +66,22 @@ class QuestionController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($id_test)
     {
         $model = new Question();
-
+        $answ = new AnswerChoice();
         if ($this->request->isPost) {
+            $model->load($this->request->post());
+            $answ->load($this->request->post());
+
+
+            echo"<pre>";
+            var_dump($model->text_question);
+            var_dump($answ->text_answer_choice);
+            var_dump($this->request->post());
+            die();
+
+
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id_question' => $model->id_question]);
             }
@@ -79,6 +91,7 @@ class QuestionController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'id_test' => $id_test,
         ]);
     }
 

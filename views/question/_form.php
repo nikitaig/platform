@@ -8,20 +8,65 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="question-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+<div class="enter_main">
+    <div class="enter" style='width:90%'>
+    <h2>Новый вопрос</h2>
 
-    <?= $form->field($model, 'test_id')->textInput() ?>
 
-    <?= $form->field($model, 'text_question')->textarea(['rows' => 6]) ?>
+    <form <?php echo "action='/question/create?id_test=$id_test'";?> method="POST">
+<input type="hidden" <?php echo 'value=' . \Yii::$app->getSecurity()->generateRandomString(50);?> name='_csrf'>
+        <span class="" for='text_question'>Текст вопроса</span>
+        <textarea type="textarea" id="text_question" name="Question[text_question]" class="form-control mb-3" rows="4" required></textarea>
+        <div class="check_box_box mb-3">
+            <label class="switch">
+                <input type="checkbox" value='1' name='Question[poly_answer]'>
+                <span class="slider"></span>
+            </label>
+            <p style="margin-bottom:0;">Несколько ответов</p>
+        </div>  
 
-    <?= $form->field($model, 'poly_answer')->textInput() ?>
+        <div class="check_box_box mb-3 w-100 ">
+            <div style="width:50%;">
+                <span class="" for='text_answer_choice'>Текст вопроса</span>
+                <input type="text" id='text_answer_choice' class='form-control' name='AnswerChoice[text_answer_choice]'>
+            </div>
+            <div style="width:10%;">
+                <span class="" for='point'>Текст вопроса</span>
+                <input type="text" id='point' class='form-control' name='AnswerChoice[point]'>
+            </div>
+        </div>   
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+
+                <div class="check_box_box mb-3 w-100 ">
+            <div style="width:50%;">
+                <span class="" for='text_answer_choice'>Текст вопроса</span>
+                <input type="text" id='text_answer_choice' class='form-control' name='AnswerChoice[text_answer_choice]'>
+            </div>
+            <div style="width:10%;">
+                <span class="" for='point'>Текст вопроса</span>
+                <input type="text" id='point' class='form-control' name='AnswerChoice[point]'>
+            </div>
+        </div>   
+
+
+                <div class="check_box_box mb-3 w-100 ">
+            <div style="width:50%;">
+                <span class="" for='text_answer_choice'>Текст вопроса</span>
+                <input type="text" id='text_answer_choice' class='form-control' name='AnswerChoice[text_answer_choice]'>
+            </div>
+            <div style="width:10%;">
+                <span class="" for='point'>Текст вопроса</span>
+                <input type="text" id='point' class='form-control' name='AnswerChoice[point]'>
+            </div>
+        </div>   
+        <div class="boba">
+            <button type='submit' class='but_yellow'>Добавить</button>
+        </div> 
+    </form>
+       
+
+
     </div>
-
-    <?php ActiveForm::end(); ?>
 
 </div>

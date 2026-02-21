@@ -92,7 +92,7 @@ class TestController extends Controller
                     $model->image->saveAs(\Yii::$app->basePath. '/web/' . $file_name);
                     $model->image=$file_name; 
                     $model->save();
-                    return $this->redirect(['view', 'id_test' => $model->id_test]);
+                    return $this->redirect(['/question/create', 'id_test' => $model->id_test]);
                 }
             }
         } else {
