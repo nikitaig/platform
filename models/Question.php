@@ -10,7 +10,7 @@ use Yii;
  * @property int $id_question
  * @property int $test_id
  * @property string $text_question
- * @property int $poly_answer
+ * @property int $type_answer
  *
  * @property AnswerChoice[] $answerChoices
  * @property Answer[] $answers
@@ -34,7 +34,7 @@ class Question extends \yii\db\ActiveRecord
     {
         return [
             [['test_id', 'text_question'], 'required'],
-            [['test_id', 'poly_answer'], 'integer'],
+            [['test_id', 'type_answer'], 'integer'],
             [['text_question'], 'string'],
             [['test_id'], 'exist', 'skipOnError' => true, 'targetClass' => Test::class, 'targetAttribute' => ['test_id' => 'id_test']],
         ];
@@ -49,7 +49,7 @@ class Question extends \yii\db\ActiveRecord
             'id_question' => 'Id Question',
             'test_id' => 'Test ID',
             'text_question' => 'Text Question',
-            'poly_answer' => 'Poly Answer',
+            'type_answer' => 'Poly Answer',
         ];
     }
 

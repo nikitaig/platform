@@ -69,6 +69,7 @@ class QuestionController extends Controller
     public function actionCreate($id_test)
     {
         $models = [];
+        $count_models = 2;
         $model = new Question();
         if ($this->request->isPost) {
             $model->load($this->request->post());

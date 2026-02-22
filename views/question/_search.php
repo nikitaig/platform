@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'text_question') ?>
 
-    <?= $form->field($model, 'poly_answer') ?>
+    <?= $form->field($model, 'type_answer') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

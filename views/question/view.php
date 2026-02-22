@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_question',
             'test_id',
             'text_question:ntext',
-            'poly_answer',
+            'type_answer',
         ],
     ]) ?>
 
