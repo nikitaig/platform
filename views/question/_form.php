@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <form <?php echo "action='/question/create?id_test=$id_test'";?> method="POST">
 <input type="hidden" <?php echo 'value=' . \Yii::$app->getSecurity()->generateRandomString(50);?> name='_csrf'>
-        <span class="" for='text_question'>Текст вопроса</span>
+        <span   for='text_question'>Текст вопроса</span>
         <textarea type="textarea" id="text_question" name="Question[text_question]" class="form-control mb-3" rows="4" required></textarea>
         <div class="check_box_box mb-3">
             <label class="switch">
@@ -28,17 +28,17 @@ use yii\widgets\ActiveForm;
 
         <?php for($i = 0; $i < 2; $i++){
                 echo'
-                    <div class="check_box_box mb-3 w-100 ">
+                    <div class="check_box_box mb-3 w-100 " id="answer-block-'.$i.'">
                         <div style="width:50%;">
-                            <span class="" for="text_answer_choice-${recordCount}">Текст вопроса</span>
-                            <input type="text" id="text_answer_choice-${recordCount}" class="form-control" name="AnswerChoice[${recordCount}][text_answer_choice]">
+                            <span id="span_text-'.$i.'"  for="text_answer_choice-'.$i.'">Текст вопроса</span>
+                            <input type="text" id="text_answer_choice-'.$i.'" class="form-control" name="AnswerChoice['.$i.'][text_answer_choice]">
                         </div>
                         <div style="width:10%;">
-                            <span class="" for="point-${recordCount}">Текст вопроса</span>
-                            <input type="text" id="point-${recordCount}" class="form-control" name="AnswerChoice[${recordCount}][point]">
+                            <span id="span_point-'.$i.'"  for="point-'.$i.'">Текст вопроса</span>
+                            <input type="text" id="point-'.$i.'" class="form-control" name="AnswerChoice['.$i.'][point]">
                         </div>
                         <div class="boba">
-                            <button type="submit" class="but_yellow">Удалить</button>
+                            <button type="button" id="remove-record-'.$i.'" class="but_yellow">Удалить</button>
                         </div> 
                     </div>  
                 ';
@@ -66,26 +66,54 @@ use yii\widgets\ActiveForm;
 <!-- JavaScript для динамического добавления записей -->
 <script>
 let recordCount = 2;
+let realCount = 2;
+
+for(let i = 0; i < 2; i++){
+    document.getElementById('remove-record-' + i).addEventListener('click', function() {
+                //console.log(lol);
+        if( realCount > 1){
+            var id_el = 'answer-block-' + i;
+            document.getElementById('answer-block-' +  i).remove();    
+            realCount--;
+        }
+    });
+}
+
 document.getElementById('add-record').addEventListener('click', function() {
-    const container = document.createElement('div');
-    
-    container.innerHTML = `
-                    <div class="check_box_box mb-3 w-100 ">
-                        <div style="width:50%;">
-                            <span class="" for="text_answer_choice-${recordCount}">Текст вопроса</span>
-                            <input type="text" id="text_answer_choice-${recordCount}" class="form-control" name="AnswerChoice[${recordCount}][text_answer_choice]">
-                        </div>
-                        <div style="width:10%;">
-                            <span class="" for="point-${recordCount}">Текст вопроса</span>
-                            <input type="text" id="point-${recordCount}" class="form-control" name="AnswerChoice[${recordCount}][point]">
-                        </div>
-                    </div>  
-    `;
-    
-    // Вставляем перед кнопкой добавления
-    const addButton = document.getElementById('add-record');
-    addButton.parentNode.insertBefore(container, addButton);
-    
-    recordCount++;
+    if( realCount < 10){
+        const container = document.createElement('div');
+        
+        container.innerHTML = `
+                        <div class="check_box_box mb-3 w-100 " id="answer-block-${recordCount}">
+                            <div style="width:50%;">
+                                <span id="span_text-${recordCount}" for="text_answer_choice-${recordCount}">Текст вопроса</span>
+                                <input type="text" id="text_answer_choice-${recordCount}" class="form-control" name="AnswerChoice[${recordCount}][text_answer_choice]">
+                            </div>
+                            <div style="width:10%;">
+                                <span id="span_point-${recordCount}" for="point-${recordCount}">Цена вопроса</span>
+                                <input type="text" id="point-${recordCount}" class="form-control" name="AnswerChoice[${recordCount}][point]">
+                            </div>
+                            <div class="boba">
+                                <button type="button" id="remove-record-${recordCount}" class="but_yellow">Удалить</button>
+                            </div> 
+                        </div>  
+        `;
+            var id_x = 'remove-record-' + recordCount;
+            const addButton = document.getElementById('add-record');
+            addButton.parentNode.insertBefore(container, addButton);
+            let lol = recordCount;
+            document.getElementById('remove-record-' + recordCount).addEventListener('click', function() {
+                //console.log(lol);
+                if( realCount > 1){
+                    var id_el = 'answer-block-' + lol;
+                    document.getElementById('answer-block-' +  lol).remove();    
+                    realCount--;
+                }
+            });
+        // Вставляем перед кнопкой добавления
+   
+        recordCount++;
+        realCount++;
+    }
 });
 </script>
