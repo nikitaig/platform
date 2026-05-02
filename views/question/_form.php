@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 
 
     <form <?php echo "action='/question/create?id_test=$id_test'";?> method="POST">
-<input type="hidden" <?php echo 'value=' . \Yii::$app->getSecurity()->generateRandomString(50);?> name='_csrf'>
+        <input type="hidden" <?php echo 'value=' . \Yii::$app->getSecurity()->generateRandomString(50);?> name='_csrf'>
         <span   for='text_question'>Текст вопроса</span>
         <textarea type="textarea" id="text_question" name="Question[text_question]" class="form-control mb-3" rows="4" required></textarea>
         <div class="check_box_box mb-3">
@@ -25,29 +25,35 @@ use yii\widgets\ActiveForm;
             </label>
             <p style="margin-bottom:0;">Несколько ответов</p>
         </div>  
-
-        <?php for($i = 0; $i < 2; $i++){
-                echo'
-                    <div class="check_box_box mb-3 w-100 " id="answer-block-'.$i.'">
+        <div style="width:50%;">
+            <span id="span_file-0"  for="question_file-0">Добавить файл</span>
+            <input type="file" id="question_file-0" class="form-control" name="QuestionFile[0][question_file]">
+        </div>
+        <div class="boba mb-3"> <!-- Кнопка добавления нового поля для файла (через JavaScript) -->
+            <button type="button" id="add-file" class="but_yellow">+ Добавить поле для файла</button>
+        </div> 
+        <?php for($i = 0; $i < 2; $i++):?>
+                
+                    <div class="check_box_box mb-3 w-100 " id="answer-block-<?php echo $i;?>">
                         <div style="width:50%;">
-                            <span id="span_text-'.$i.'"  for="text_answer_choice-'.$i.'">Текст вопроса</span>
-                            <input type="text" id="text_answer_choice-'.$i.'" class="form-control" name="AnswerChoice['.$i.'][text_answer_choice]">
+                            <span id="span_text-<?php echo $i;?>"  for="text_answer_choice-<?php echo $i;?>">Текст вопроса</span>
+                            <input type="text" id="text_answer_choice-<?php echo $i;?>" class="form-control" name="AnswerChoice[<?php echo $i;?>][text_answer_choice]">
                         </div>
                         <div style="width:10%;">
-                            <span id="span_point-'.$i.'"  for="point-'.$i.'">Текст вопроса</span>
-                            <input type="text" id="point-'.$i.'" class="form-control" name="AnswerChoice['.$i.'][point]">
+                            <span id="span_point-<?php echo $i;?>"  for="point-<?php echo $i;?>">Цена вопроса</span>
+                            <input type="text" id="point-<?php echo $i;?>" class="form-control" name="AnswerChoice[<?php echo $i;?>][point]">
                         </div>
                         <div class="boba">
-                            <button type="button" id="remove-record-'.$i.'" class="but_yellow">Удалить</button>
+                            <button type="button" id="remove-record-<?php echo $i;?>" class="but_yellow">Удалить</button>
                         </div> 
                     </div>  
-                ';
-            }?>
+                
+        <?php endfor;?>
  
 
         
        <div class="boba mb-3"> <!-- Кнопка добавления новой записи (через JavaScript) -->
-    <button type="button" id="add-record" class="but_yellow">+ Добавить запись</button>
+    <button type="button" id="add-record" class="but_yellow">+ Добавить вариант ответа</button>
     </div> 
         <div class="boba">
             <button type='submit' class='but_yellow'>Добавить</button>
@@ -67,7 +73,7 @@ use yii\widgets\ActiveForm;
 <script>
 let recordCount = 2;
 let realCount = 2;
-
+let fileCount = 1;
 for(let i = 0; i < 2; i++){
     document.getElementById('remove-record-' + i).addEventListener('click', function() {
                 //console.log(lol);
@@ -116,4 +122,24 @@ document.getElementById('add-record').addEventListener('click', function() {
         realCount++;
     }
 });
+
+
+document.getElementById('add-file').addEventListener('click', function() {
+    if( fileCount < 3){
+        const container = document.createElement('div');
+        
+        container.innerHTML = `
+                <div style="width:50%;">
+                    <span id="span_file-${fileCount}'"  for="question_file-${fileCount}">Добавить файл</span>
+                    <input type="file" id="question_file-${fileCount}" class="form-control" name="QuestionFile[${fileCount}][question_file]">
+                </div>
+        `;
+            const addButton = document.getElementById('add-file');
+            addButton.parentNode.insertBefore(container, addButton);
+        // Вставляем перед кнопкой добавления
+   
+        fileCount++;
+    }
+});
+
 </script>

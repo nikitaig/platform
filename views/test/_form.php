@@ -52,7 +52,7 @@ use app\models\Category;
     
     <div class="check_box_box mb-3">
         <label class="switch">
-            <input type="checkbox" value='1' name='Test[is_end]' id='is_end_check' onchange='toggleEndField(this)'>
+            <input type="checkbox" value='1' name='Test[is_end]' id='is_end_check' onchange="Test_Form_Creare_Show_Field(this, 'end')">
             <span class="slider"></span>
         </label>
         <p style="margin-bottom:0;">Установить дату окончания теста</p>
@@ -69,7 +69,7 @@ use app\models\Category;
 
     <div class="check_box_box mb-3">
         <label class="switch">
-            <input type="checkbox" value='1' name='Test[is_timer]' id='enable-extra-checkbox' onchange='toggleTimerField(this)'>
+            <input type="checkbox" value='1' name='Test[is_timer]' id='enable-extra-checkbox' onchange="Test_Form_Creare_Show_Field(this, 'timer')">
             <span class="slider"></span>
         </label>
         <p style="margin-bottom:0;">Установить время прохождения теста</p>
@@ -89,29 +89,3 @@ use app\models\Category;
 
 </div>
 </div>
-<script>
-function toggleTimerField(checkbox) {
-    var container = document.getElementById('timer-container');
-    var timer = document.getElementById('timer');
-    
-    if (checkbox.checked) {
-        container.style.display = 'block';
-    } else {
-        container.style.display = 'none';
-        timer.value = ''; // Очищаем поле при скрытии
-    }
-}
-function toggleEndField(checkbox) {
-    var container = document.getElementById('end-container');
-    var end = document.getElementById('end');
-    
-    if (checkbox.checked) {
-        container.style.display = 'block';
-    } else {
-        container.style.display = 'none';
-        end.value = ''; // Очищаем поле при скрытии
-    }
-}
-toggleTimerField('#enable-extra-checkbox');
-toggleEndField('#is_end_check');
-</script>

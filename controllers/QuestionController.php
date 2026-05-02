@@ -5,9 +5,11 @@ namespace app\controllers;
 use app\models\Question;
 use app\models\AnswerChoice;
 use app\models\QuestionSearch;
+use app\models\QuestionFile;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * QuestionController implements the CRUD actions for Question model.
@@ -74,18 +76,28 @@ class QuestionController extends Controller
         if ($this->request->isPost) {
             $model->load($this->request->post());
             $model->test_id = $id_test;
-            $model->save();
+            //$model->save();
             $postData = $this->request->post('AnswerChoice', []);
 
-            // echo"<pre>";
-            // var_dump($model);
-            // die();
+            $postFiles = $this->request->post('QuestionFile', []);
             foreach($postData as $data){
                 $mod = new AnswerChoice();
                 $mod->text_answer_choice = $data['text_answer_choice'];
                 $mod->point = $data['point'];
                 $mod->question_id = $model->id_question;
                 $mod->save();
+            }
+            foreach($postFiles as $file){
+                $fil = new QuestionFile();
+                //$fil->question_file = $file['question_file'];
+                  
+                $fil->question_file = UploadedFile::getInstance($fil, 'question_file');    
+                  
+                $file_name='/assets/question_file/' . \Yii::$app->getSecurity()->generateRandomString(50). '.' . $fil->question_file->extension;
+                $fil->question_file->saveAs(\Yii::$app->basePath. '/web/' . $file_name);
+                $fil->question_file=$file_name; 
+                $fil->question_id = $model->id_question;
+                $fil->save();
             }
             return $this->redirect(['create', 'id_test' => $id_test]);
 
